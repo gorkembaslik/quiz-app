@@ -35,7 +35,6 @@ export default function QuizApp() {
   const [activeQuestions, setActiveQuestions] = useState<Question[]>([]);
   const [quizState, setQuizState] = useState<'menu' | 'playing' | 'review'>('menu');
 
-  // Sidebar State
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   // --- Session State ---
@@ -44,7 +43,6 @@ export default function QuizApp() {
   const [flagged, setFlagged] = useState<Set<number>>(new Set());
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
 
-  // --- Settings & History ---
   const [useTimer, setUseTimer] = useState(false);
   const [history, setHistory] = useState<QuizHistory[]>([]);
 
@@ -68,7 +66,7 @@ export default function QuizApp() {
     }
   }, []);
 
-  // --- 1. DOWNLOAD PDF ---
+  // --- PDF ---
   const handleDownloadPDF = async () => {
     setDownloading(true);
     const { data: allQuestions, error } = await supabase
@@ -109,7 +107,7 @@ export default function QuizApp() {
     setDownloading(false);
   };
 
-  // --- 2. START QUIZ ---
+  // --- START ---
   const startQuiz = async () => {
     setLoading(true);
     const { data, error } = await supabase.from('questions').select('*');
@@ -131,12 +129,11 @@ export default function QuizApp() {
     setTimeLeft(useTimer ? 30 * 60 : null);
     setLoading(false);
 
-    // Desktop: Open sidebar. Mobile: Keep closed.
     if (window.innerWidth >= 768) setSidebarOpen(true);
     else setSidebarOpen(false);
   };
 
-  // --- 3. TIMER ---
+  // --- TIMER ---
   useEffect(() => {
     if (quizState !== 'playing' || timeLeft === null) return;
     if (timeLeft === 0) { finishQuiz(); return; }
@@ -144,7 +141,7 @@ export default function QuizApp() {
     return () => clearInterval(timerId);
   }, [timeLeft, quizState]);
 
-  // --- 4. SUBMIT NEW QUESTION ---
+  // --- ADD Q ---
   const handleAddQuestion = async () => {
     if (!newQText || newQOptions.some(o => !o)) return;
     setSubmitStatus("Submitting...");
@@ -158,7 +155,7 @@ export default function QuizApp() {
     }
   };
 
-  // --- 5. FINISH ---
+  // --- FINISH ---
   const finishQuiz = () => {
     setQuizState('review');
     let correct = 0;
@@ -250,9 +247,11 @@ export default function QuizApp() {
   const isReview = quizState === 'review';
 
   return (
-    <div className="flex h-screen bg-slate-100 font-sans text-slate-800 overflow-hidden relative">
+    // FIX 1: Change h-screen to min-h-screen for mobile so the whole page scrolls naturally. 
+    // Only use h-screen on md (desktop) to get that app-like feel.
+    <div className="flex flex-col md:flex-row min-h-screen md:h-screen bg-slate-100 font-sans text-slate-800 overflow-visible md:overflow-hidden relative">
 
-      {/* MOBILE OVERLAY (High Z-Index) */}
+      {/* MOBILE OVERLAY */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/60 z-40 md:hidden transition-opacity"
@@ -260,40 +259,27 @@ export default function QuizApp() {
         />
       )}
 
-      {/* SIDEBAR (Drawer on Mobile, Column on Desktop) */}
+      {/* SIDEBAR */}
       <aside
         className={cn(
-          "bg-white border-r h-full flex flex-col transition-transform duration-300 ease-in-out z-50",
-          // Mobile: Fixed drawer
-          "fixed inset-y-0 left-0 w-72 shadow-2xl md:shadow-none",
-          // Desktop: Relative column
+          "bg-white border-r flex flex-col transition-transform duration-300 ease-in-out z-50",
+          "fixed inset-y-0 left-0 w-72 shadow-2xl md:shadow-none h-full",
           "md:relative md:translate-x-0",
-
-          // State Logic
           sidebarOpen ? "translate-x-0" : "-translate-x-full md:w-0 md:overflow-hidden"
         )}
       >
         <div className="p-4 border-b flex justify-between items-center bg-slate-50">
           <h2 className="font-bold text-slate-700">Questions</h2>
-
-          {/* CLOSE BUTTON (<) */}
-          <button
-            onClick={() => setSidebarOpen(false)}
-            className="p-1 hover:bg-slate-200 rounded text-slate-500 transition-colors"
-            title="Collapse Sidebar"
-          >
+          <button onClick={() => setSidebarOpen(false)} className="p-1 hover:bg-slate-200 rounded text-slate-500 transition-colors">
             <ChevronLeft className="w-6 h-6" />
           </button>
         </div>
-
-        {/* Sidebar Grid */}
         <div className="flex-1 overflow-y-auto p-3">
           <div className="grid grid-cols-5 gap-2">
             {activeQuestions.map((q, idx) => {
               const status = isReview
                 ? (userAnswers[q.id] === q.correct_answer ? 'correct' : 'wrong')
                 : (currentIndex === idx ? 'current' : flagged.has(q.id) ? 'flagged' : userAnswers[q.id] !== undefined ? 'answered' : 'none');
-
               const colors = {
                 current: "bg-blue-600 text-white scale-105 shadow-md",
                 flagged: "bg-yellow-100 border-yellow-400 text-yellow-700",
@@ -302,7 +288,6 @@ export default function QuizApp() {
                 wrong: "bg-red-100 border-red-300 text-red-700",
                 none: "bg-white border-slate-200 text-slate-500 hover:bg-slate-50"
               };
-
               return (
                 <button key={q.id} onClick={() => setCurrentIndex(idx)} className={cn("h-10 w-full rounded flex items-center justify-center text-sm font-medium border relative transition-all", colors[status])}>
                   {idx + 1}
@@ -312,8 +297,6 @@ export default function QuizApp() {
             })}
           </div>
         </div>
-
-        {/* Sidebar Footer */}
         <div className="p-4 border-t bg-slate-50">
           <button onClick={isReview ? () => setQuizState('menu') : finishQuiz} className="w-full py-2 bg-slate-800 text-white rounded hover:bg-slate-900 transition flex items-center justify-center gap-2">
             {isReview ? <><RotateCcw className="w-4 h-4" /> Menu</> : "Submit Quiz"}
@@ -322,15 +305,15 @@ export default function QuizApp() {
       </aside>
 
       {/* MAIN CONTENT AREA */}
-      <main className="flex-1 h-screen overflow-y-auto relative flex flex-col">
+      {/* FIX 2: Remove overflow-hidden on mobile main so it can grow. Desktop keeps overflow-y-auto. */}
+      <main className="flex-1 w-full md:h-screen md:overflow-y-auto flex flex-col relative">
 
-        {/* OPEN BUTTON (>) - Sticky Header for Mobile/Desktop */}
+        {/* Mobile Header for "Show Questions" Button */}
         {!sidebarOpen && (
-          <div className="sticky top-0 z-10 p-4 w-full bg-slate-100/80 backdrop-blur-sm">
+          <div className="sticky top-0 z-10 p-4 w-full bg-slate-100/95 backdrop-blur-sm md:bg-transparent md:static">
             <button
               onClick={() => setSidebarOpen(true)}
               className="p-2 bg-white border border-slate-200 shadow-sm rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-all flex items-center gap-2"
-              title="Expand Questions"
             >
               <ChevronRight className="w-5 h-5" />
               <span className="text-sm font-medium md:hidden">Show Questions</span>
@@ -341,31 +324,27 @@ export default function QuizApp() {
         <div className={cn("flex-1 p-4 md:p-8 lg:p-12", !sidebarOpen && "pt-0 md:pt-4")}>
           <div className="max-w-3xl mx-auto">
             {/* Question Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden min-h-[500px] flex flex-col">
-              <div className="bg-slate-50 p-6 border-b border-slate-100 flex justify-between items-start">
+            {/* FIX 3: Remove min-h constraints that trap scroll, let it be auto. */}
+            <div className="bg-white rounded-2xl shadow-xl flex flex-col h-auto">
+              <div className="bg-slate-50 p-6 border-b border-slate-100 flex justify-between items-start rounded-t-2xl">
                 <div>
                   <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                     Question {currentIndex + 1} of {activeQuestions.length}
                   </span>
-
-                  {/* Timer Display */}
                   {timeLeft !== null && !isReview && (
                     <div className={cn("mt-1 flex items-center gap-2 font-mono text-sm font-bold", timeLeft < 60 ? "text-red-600 animate-pulse" : "text-blue-600")}>
                       <Clock className="w-3 h-3" />
                       {formatTime(timeLeft)}
                     </div>
                   )}
-
                   <p className="mt-4 text-xl font-medium text-slate-800 leading-relaxed">
                     {currentQ?.text}
                   </p>
                 </div>
-
                 {!isReview && (
                   <button
                     onClick={() => setFlagged(prev => { const n = new Set(prev); n.has(currentQ.id) ? n.delete(currentQ.id) : n.add(currentQ.id); return n; })}
                     className={cn("p-2 rounded-full transition-colors", flagged.has(currentQ.id) ? "bg-yellow-100 text-yellow-600" : "text-slate-300 hover:bg-slate-100")}
-                    title="Flag for review"
                   >
                     <Flag className={cn("w-6 h-6", flagged.has(currentQ.id) && "fill-current")} />
                   </button>
@@ -377,7 +356,6 @@ export default function QuizApp() {
                 {currentQ?.options.map((opt, i) => {
                   const selected = userAnswers[currentQ.id] === i;
                   const isCorrect = currentQ.correct_answer === i;
-
                   let style = "border-slate-200 hover:bg-slate-50";
                   if (isReview) {
                     if (isCorrect) style = "border-green-500 bg-green-50 text-green-800";
@@ -386,11 +364,10 @@ export default function QuizApp() {
                   } else if (selected) {
                     style = "border-blue-600 bg-blue-50 text-blue-800";
                   }
-
                   return (
                     <button key={i} disabled={isReview} onClick={() => setUserAnswers(prev => ({ ...prev, [currentQ.id]: i }))}
                       className={cn("w-full text-left p-4 rounded-xl border-2 flex items-center gap-3 transition-all", style)}>
-                      <div className={cn("w-6 h-6 rounded-full border-2 flex items-center justify-center text-[10px]", (selected || (isReview && isCorrect)) ? "border-current" : "border-slate-300")}>
+                      <div className={cn("w-6 h-6 rounded-full border-2 flex items-center justify-center text-[10px] shrink-0", (selected || (isReview && isCorrect)) ? "border-current" : "border-slate-300")}>
                         {String.fromCharCode(65 + i)}
                       </div>
                       <span className="flex-1">{opt}</span>
@@ -401,16 +378,17 @@ export default function QuizApp() {
                 })}
               </div>
 
-              {/* Card Footer */}
-              <div className="p-6 border-t border-slate-100 flex justify-between bg-slate-50">
-                <button disabled={currentIndex === 0} onClick={() => setCurrentIndex(i => i - 1)} className="px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-200 disabled:opacity-50 flex items-center gap-2">
+              {/* Footer Buttons - Inside the card now so they scroll WITH the content */}
+              <div className="p-6 border-t border-slate-100 flex justify-between bg-slate-50 rounded-b-2xl">
+                <button disabled={currentIndex === 0} onClick={() => { setCurrentIndex(i => i - 1); window.scrollTo(0, 0); }} className="px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-200 disabled:opacity-50 flex items-center gap-2">
                   <ChevronLeft className="w-4 h-4" /> Previous
                 </button>
-                <button disabled={currentIndex === activeQuestions.length - 1} onClick={() => setCurrentIndex(i => i + 1)} className="px-6 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2">
+                <button disabled={currentIndex === activeQuestions.length - 1} onClick={() => { setCurrentIndex(i => i + 1); window.scrollTo(0, 0); }} className="px-6 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2">
                   Next <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
+            {/* End Question Card */}
           </div>
         </div>
       </main>
