@@ -82,7 +82,7 @@ export default function QuizApp() {
 
     const doc = new jsPDF();
     doc.setFontSize(18);
-    doc.text("QuizMaster Pro - Full Question Database", 14, 20);
+    doc.text("Intelligent Quiz - Full Question Database", 14, 20);
     doc.setFontSize(10);
     doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 14, 28);
     doc.text(`Total Questions: ${allQuestions.length}`, 14, 33);
@@ -177,7 +177,7 @@ export default function QuizApp() {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 font-sans text-slate-800">
         <div className="max-w-2xl w-full bg-white rounded-2xl shadow-xl p-8">
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">QuizMaster Pro</h1>
+          <h1 className="text-4xl font-bold text-slate-900 mb-2">Intelligent Quiz</h1>
           <p className="text-slate-500 mb-8">Community Driven Exam Prep</p>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-6">
