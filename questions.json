@@ -1571,5 +1571,28 @@
       "none"
     ],
     "correct_answer": 0
+  },
+  {
+    "id": 160,
+    "text": "Which statement best describes an Al agent according to the lecture?",
+    "options": [
+      "It is a larger language model trained with more parameters and more text than a standard LLM",
+      "It is a text classifier that assigns one fixed label to each user request",
+      "It is a tokenizer that converts the user goal into tokens before sending lhem to a model",
+      "It is only a new name for a Large Language Model without any additional workflow around it",
+      "It is a software system built around an Al model that pursues a user defined goal by iterating over context, actions, tools or memory, observations, and next steps"
+    ],
+    "correct_answer": 4
+  },
+  {
+    "id": 161,
+    "text": "What is Data Leakage in the context of machine learning? Select the option which is more representative of the Data Leakage concept.",
+    "options": [
+      "The accidental removal of important features during preprocessing",
+      "The use of information in the training process that would nol be available at prediction time, leading to over-optimistic performance estimates",
+      "A technique to enhance model generalization by including additional data",
+      "The process of splitting the dataset into training and test sets"
+    ],
+    "correct_answer": 1
   }
 ]
