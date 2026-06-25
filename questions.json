@@ -1573,26 +1573,212 @@
     "correct_answer": 0
   },
   {
-    "id": 160,
-    "text": "Which statement best describes an Al agent according to the lecture?",
+    "id": 156,
+    "text": "Which statement best describes an AI agent according to the lecture?",
     "options": [
       "It is a larger language model trained with more parameters and more text than a standard LLM",
       "It is a text classifier that assigns one fixed label to each user request",
-      "It is a tokenizer that converts the user goal into tokens before sending lhem to a model",
+      "It is a tokenizer that converts the user goal into tokens before sending them to a model",
       "It is only a new name for a Large Language Model without any additional workflow around it",
-      "It is a software system built around an Al model that pursues a user defined goal by iterating over context, actions, tools or memory, observations, and next steps"
+      "It is a software system built around an AI model that pursues a user defined goal by iterating over context, actions, tools or memory, observations, and next steps"
     ],
-    "correct_answer": 4
+    "correct_answer": 3
   },
   {
-    "id": 161,
+    "id": 157,
     "text": "What is Data Leakage in the context of machine learning? Select the option which is more representative of the Data Leakage concept.",
     "options": [
       "The accidental removal of important features during preprocessing",
-      "The use of information in the training process that would nol be available at prediction time, leading to over-optimistic performance estimates",
+      "The use of information in the training process that would not be available at prediction time, leading to over-optimistic performance estimates",
       "A technique to enhance model generalization by including additional data",
       "The process of splitting the dataset into training and test sets"
     ],
     "correct_answer": 1
+  },
+  {
+    "id": 158,
+    "text": "According to the AI Act, after the staggered enforcement dates become effective, which statement is correct for prohibited AI systems and high risk AI systems?",
+    "options": [
+      "Only prohibited AI systems are affected. High risk AI systems do not have mandatory compliance requirements",
+      "Prohibited AI systems are banned. High risk AI systems must comply with mandatory requirements",
+      "High risk AI systems are banned in the same way as prohibited AI systems",
+      "Prohibited AI systems are banned. High risk AI systems are only subject to a voluntary code of conduct",
+      "None of the other options"
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": 159,
+    "text": "According to the current practice, when do few-shot examples tend to help rather than hurt?",
+    "options": [
+      "When the examples cover the intended variability of the task, such as classification or structured extraction; they hurt when they are narrow, misleading or consume too much context",
+      "Always, because more examples always improve performance regardless of the task",
+      "Only on creative tasks, where the model is expected to copy the examples closely",
+      "Only on advanced reasoning models doing open-ended reasoning"
+    ],
+    "correct_answer": 0
+  },
+  {
+    "id": 160,
+    "text": "Consider two task families. Family A includes high-value low-volume decision making and multi-step unpredictable workflows. Family B includes repeatable operational tasks with high frequency and low complexity. Which implementation choice is most appropriate?",
+    "options": [
+      "Use classical deterministic workflows for both family A and family B because agents are only chatbots",
+      "Use agents for family A and classical deterministic workflows for family B",
+      "Use agents for both family A and family B because agents are always preferable to workflows",
+      "Use neither agents nor workflows because both tasks require only a trained classifier",
+      "Use classical deterministic workflows for family A and agents for family B"
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": 161,
+    "text": "For a task that is repeatable, regulated and frequent, and that can be described as a clear sequence of predefined steps, which approach does the lecture recommend?",
+    "options": [
+      "A classical deterministic workflow, because it gives deterministic and traceable outputs",
+      "An agent, because dynamic decision-making is always preferable in regulated environments",
+      "A simple chatbot prompt, because chatbot inputs and outputs are automatically auditable",
+      "An agent, because predefined steps can never produce auditable outputs"
+    ],
+    "correct_answer": 0
+  },
+  {
+    "id": 162,
+    "text": "Which set of metrics can be used to evaluate a Named Entity Recognition system according to the lecture?",
+    "options": [
+      "None of other options",
+      "Sum of squared errors and Mean Absolute Error",
+      "Only qualitative inspection because NER generates free output text",
+      "Vocabulary size",
+      "Accuracy, Precision, Recall, and F1 score"
+    ],
+    "correct_answer": 4
+  },
+  {
+    "id": 163,
+    "text": "Which answer is the most complete description of one-hot encoding for tokens according to the lecture?",
+    "options": [
+      "It requires N dimensions to represent N different tokens",
+      "All the other options are correct",
+      "It is a vector representation where different tokens are orthogonal to each other",
+      "It is a simple theoretical encoding rather than a learned semantic embedding"
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": 164,
+    "text": "How can Natural Language Processing (NLP) models typically be classified in terms of their reasoning approach when is used after training?",
+    "options": [
+      "Deduction",
+      "Induction",
+      "Transduction",
+      "None of other options"
+    ],
+    "correct_answer": 2
+  },
+  {
+    "id": 165,
+    "text": "In the k-Fold Cross Validation (k-FCV) technique, what does the parameter k represent?",
+    "options": [
+      "The number of eigenvalues in the dataset's covariance matrix",
+      "The number of partitions the dataset is divided into",
+      "The number of annealing steps in a training method",
+      "The number of dimensions to be reduced with PCA",
+      "The number of neighbors used in a k-NN classification algorithm"
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": 166,
+    "text": "According to the AI Act, which option correctly classifies AI based social scoring by governments and AI enabled video games?",
+    "options": [
+      "Social scoring by governments is unacceptable risk. AI enabled video games are high risk",
+      "Social scoring by governments is high risk. AI enabled video games are limited risk",
+      "Social scoring by governments is unacceptable risk. AI enabled video games are minimal or no risk",
+      "Social scoring by governments is limited risk. AI enabled video games are minimal or no risk",
+      "None of the other options"
+    ],
+    "correct_answer": 2
+  },
+  {
+    "id": 167,
+    "text": "Which of the following scenarios is an example of Data Leakage?",
+    "options": [
+      "When a feature is missing in the training dataset but present during real-world use",
+      "When the training dataset is unbalanced with respect to the test dataset",
+      "When normalization is applied inconsistently across training and test datasets",
+      "When the model is exposed to information outside the expected training dataset, which gives it an advantage not available in real-world application",
+      "None of other options"
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": 168,
+    "text": "According to the AI Act, which option correctly classifies AI applications used for scoring exams in public procedures or universities and credit scoring in banking for loan decisions?",
+    "options": [
+      "None of the other options",
+      "Exam scoring in public procedures or universities is high risk. Credit scoring in banking for loan decisions is high risk",
+      "Exam scoring in public procedures or universities is limited risk. Credit scoring in banking for loan decisions is limited risk",
+      "Exam scoring in public procedures or universities is high risk. Credit scoring in banking for loan decisions is limited risk",
+      "Exam scoring in public procedures or universities is limited risk. Credit scoring in banking for loan decisions is high risk"
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": 169,
+    "text": "According to the AI Act, which model is used to classify AI applications by risk?",
+    "options": [
+      "A two-level risk model with only allowed and forbidden AI applications",
+      "Mainly a list of prohibited applications without a general risk classification model",
+      "None of the other options",
+      "A five-level risk model with unacceptable risk, high risk, limited risk, minimal risk, and social scoring",
+      "A four-level risk model with unacceptable risk, high risk, limited risk, and minimal risk",
+      "A three-level risk model with high risk, medium risk, and low risk"
+    ],
+    "correct_answer": 4
+  },
+  {
+    "id": 170,
+    "text": "How can a tokenizer process a sentence such as 'this teddy bear is reaaaally cute' when one text piece (reaaaally) is not in the predefined vocabulary?",
+    "options": [
+      "It cannot process the sentence because the unknown word must only be removed from the sequence",
+      "It can replace the unknown word with the special token [PAD] because [PAD] represents unknown or unseen text pieces",
+      "It can represent the unknown or unseen text piece with the special token [UNK]",
+      "In traditional systems the whole sentence is always tokenized as a single integer used in the next processing steps"
+    ],
+    "correct_answer": 2
+  },
+  {
+    "id": 171,
+    "text": "Which definition best describes Named Entity Recognition according to the lecture?",
+    "options": [
+      "It generates a new output text from an input text, for example in translation or summarization",
+      "It detects the language of the whole input text and assigns one language label to the document",
+      "None of other options",
+      "It identifies and classifies entities mentioned in text such as names, organizations, locations, dates, codes, and quantities",
+      "It divides raw text into tokens before they are converted into token IDs or embeddings"
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": 172,
+    "text": "According to the class lessons, which of the following are part of the \"Evaluation and Assessment of an AI System\"",
+    "options": [
+      "Real-world Performance: Beyond the Numbers including user studies, robustness assessments, and stress testing",
+      "Ethics and Compliance: Meeting Legal and Societal Standards including bias and fairness analysis, privacy and security evaluation, and regulatory compliance checks",
+      "Continuous Monitoring: Ensuring Long-Term Reliability including data drift detection, model retraining strategies, and performance degradation alerts",
+      "None of the other options",
+      "All the other options"
+    ],
+    "correct_answer": 4
+  },
+  {
+    "id": 173,
+    "text": "In case the learning method is not capable to deal with missing data, a very simple and effective solution consider to replace the missing values with mean, mode or median of the observed given values",
+    "options": [
+      "False, this is not possible, since that is just descriptive statistics about the features, and cannot be used to fill missing data",
+      "False, this is very unusual and not common in practice",
+      "True"
+    ],
+    "correct_answer": 2
   }
 ]
