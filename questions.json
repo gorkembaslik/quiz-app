@@ -1780,5 +1780,118 @@
       "True"
     ],
     "correct_answer": 2
+  },
+  {
+    "id": 174,
+    "text": "What is the correct description of the Expanding Window Forward Validation technique?",
+    "options": [
+      "It is a forward k-Fold Cross Validation where k subsets are created by moving forward through the dataset in temporal order",
+      "None of other options",
+      "It is a forward variation of Leave One Out Cross Validation where one instance is used for testing while the rest move forward as the training set",
+      "It is a forward bootstrap method where random samples are created in a temporal sequence for training and validation",
+      "t is a time series validation technique where the training set grows with each step, while the test set moves forward in time without overlapping previous training data"
+    ],
+    "correct_answer": 4
+  },
+  {
+    "id": 175,
+    "text": "What is the correct description of the Expanding Window Forward Validation technique?",
+    "options": [
+      "It is a forward k-Fold Cross Validation where k subsets are created by moving forward through the dataset in temporal order",
+      "None of other options",
+      "It is a forward variation of Leave One Out Cross Validation where one instance is used for testing while the rest move forward as the training set",
+      "It is a forward bootstrap method where random samples are created in a temporal sequence for training and validation",
+      "t is a time series validation technique where the training set grows with each step, while the test set moves forward in time without overlapping previous training data"
+    ],
+    "correct_answer": 4
+  },
+  {
+    "id": 176,
+    "text": "What does it mean that an agentic workflow can be partially self-healing?",
+    "options": [
+      "The agent silently ignores the failed steps and continues, so that the workflow never stops",
+      "The agent guarantees a correct result because every step is automatically executed twice and compared",
+      "The agent keeps retrying the failed step forever, with no limit on the number of attempts",
+      "The agent can detect failed steps, analyze the error, change strategy and retry under explicit limits, instead of simply stopping or silently producing errors"
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": 177,
+    "text": "Which mechanism computes a context-aware representation for a token by dynamically assigning relevance weights to tokens within the same input sequence?",
+    "options": [
+      "Self-attention",
+      "Embedding",
+      "Semi-supervised learning",
+      "Euclidean distance between embedding vectors"
+    ],
+    "correct_answer": 0
+  },
+  {
+    "id": 178,
+    "text": "How does semantic retrieval select the chunks to return for a user question?",
+    "options": [
+      "It returns all chunks in the knowledge base ranked by size",
+      "It asks the generative model to compare the question with all chunks in a loop until a termination criterion is reached",
+      "It compares the embedding of the question with the embeddings of the document chunks, typically using a similarity measure such as cosine similarity, and returns the top-k most similar chunks",
+      "It returns the chunks that share the largest number of identical words with the question"
+    ],
+    "correct_answer": 2
+  },
+  {
+    "id": 179,
+    "text": "Which of the following conditions must be met to consider a dataset balanced?",
+    "options": [
+      "The samples must be distributed uniformly across the entire feature space",
+      "The dataset must include only two classes",
+      "Each feature in the dataset must have the same mean and standard deviation across classes",
+      "None of other options",
+      "Each class must have approximately the same number of samples"
+    ],
+    "correct_answer": 4
+  },
+  {
+    "id": 180,
+    "text": "Which option most completely describes the special tokens usually used according to the lecture?",
+    "options": [
+      "Only [PAD] is used, to fill empty positions so that sequences can have the same length",
+      "Only [UNK] is used, to represent unknown or unseen text pieces",
+      "Both [UNK], which represents unknown or unseen text pieces, and [PAD], which fills empty positions so that sequences can have the same length, are used",
+      "Neither [UNK] nor [PAD] is used because modern tokenizers do not need special tokens"
+    ],
+    "correct_answer": 2
+  },
+  {
+    "id": 181,
+    "text": "Techniques such as Word2Vec are trained using which kind of information?",
+    "options": [
+      "None of other options",
+      "They are not trained because they are unsupervised learning techniques",
+      "Embedding vectors obtained from other embedding systems as input data",
+      "Continuous Bag of Words and skip-gram approaches based on word contexts"
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": 182,
+    "text": "Which measure applied to embedding vectors is used in the lecture to compare whether tokens are similar, dissimilar, or independent?",
+    "options": [
+      "Sine similarity",
+      "Cosine similarity",
+      "Hamming distance",
+      "Euclidean distance"
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": 183,
+    "text": "In prompt and context engineering, what is the main purpose of the self-verify technique?",
+    "options": [
+      "It is not needed in large models because they automatically self-regulate every request",
+      "It consists of providing few-shot examples that show the model how to imitate a desired answer style",
+      "It is used to reduce hallucinations by asking the model to check critical claims, assumptions, and evidence before concluding",
+      "It is commonly avoided because it always makes the conversation too long and saturates the context window"
+    ],
+    "correct_answer": 2
   }
 ]
