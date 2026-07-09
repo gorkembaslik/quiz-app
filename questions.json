@@ -1893,5 +1893,108 @@
       "It is commonly avoided because it always makes the conversation too long and saturates the context window"
     ],
     "correct_answer": 2
+  },
+  {
+    "id": 184,
+    "text": "According to the class discussion about the input space of the intelligent systems, which is correct option ?",
+    "options": [
+      "It is not possible to think to the single datum in input to the neural network as a point in the \"input space\" of the model, in the case of a N dimensional vector when N >2",
+      "Only for linear classifiers and linear regressors it is possible to think to the single datum in input to the neural network as a point in the \"input space\" of the model, even if the input is a single value, a N dimensional vector, or an image.",
+      "It is possible to think to the single datum in input to the neural network as a point in the \"input space\" of the model, even if the input is a single value, a N dimensional vector, or an image",
+      "It is possible to think to the single datum in input to the neural network as a set of N points in the \"input space\" of the model"
+    ],
+    "correct_answer": 2
+  },
+  {
+    "id": 185,
+    "text": "In standard self-attention, the attention matrix compares tokens inside the same input sequence. How does the computational cost scale with the sequence length according to the lecture?",
+    "options": [
+      "With the size of the vocabulary used by the tokenizer",
+      "It is not predictable because the attention width changes dynamically for every input sequence",
+      "Linearly with the sequence length",
+      "Quadratically with the sequence length"
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": 186,
+    "text": "Which reasoning approach is characterized by the following advantages:\n\nAlleviate knowledge acquisition bottleneck (no rules, no equations, just data)\n\nDoes not require knowledge engineers\n\nScalable in constructing knowledge base\n\nAdaptive to changing conditions\n\nEasy migration to new domains",
+    "options": [
+      "Deduction",
+      "Induction",
+      "None of other options",
+      "Transduction"
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": 187,
+    "text": "Which tokenizer type is associated with large vocabulary size and word variations not handled according to the lecture?",
+    "options": [
+      "Subword-level tokenizer",
+      "Character-level tokenizer",
+      "These effects are not associated with current tokenizers because they can always deal with all possible text inputs",
+      "Word-level tokenizer"
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": 188,
+    "text": "What practical rule follows from the \"lost in the middle\" effect observed in long contexts?",
+    "options": [
+      "The position of critical instructions does not matter if enough few-shot examples are provided",
+      "The context window should always be filled completely to maximize accuracy",
+      "Critical instructions should be placed exactly in the middle of the context for balance",
+      "Critical instructions should be placed at the start and at the end of the context, never buried in the middle"
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": 189,
+    "text": "According to prompting fundamentals, how should a vague instruction such as \"write a concise summary\" be improved?",
+    "options": [
+      "By replacing adjectives with quantifiable constraints, for example \"5 bullets, at most 25 words each, cite paragraph numbers\"",
+      "By telling the model it is an expert with thirty years of experience",
+      "By adding polite phrasing so that the model becomes more cooperative",
+      "By increasing the prompt length until it fills most of the context window",
+      "By trusting the model to adapt the output length automatically, since it adjusts to the context size (since not action is needed)"
+    ],
+    "correct_answer": 0
+  },
+  {
+    "id": 190,
+    "text": "Which statement best describes an AI agent according to the lecture?",
+    "options": [
+      "It is a software system built around an AI model that pursues a user defined goal by iterating over context, actions, tools or memory, observations, and next steps",
+      "It is a text classifier that assigns one fixed label to each user request",
+      "It is a larger language model trained with more parameters and more text than a standard LLM",
+      "It is only a new name for a Large Language Model without any additional workflow around it",
+      "It is a tokenizer that converts the user goal into tokens before sending them to a model"
+    ],
+    "correct_answer": 0
+  },
+  {
+    "id": 191,
+    "text": "How is the method 5x2CV defined?",
+    "options": [
+      "The dataset is partitioned into five parts, with each part used twice for testing and validation",
+      "The whole data set is randomly partitioned into two subsets (A and B), the model is built with A and validated with B, then reversed with the model built with B and validated with A, and the performance measures are aggregated across 5 repetitions",
+      "The dataset is divided into two subsets, each used for validation only once, with no repetition",
+      "The dataset is split into five equal parts, each used once as a test set while the remaining four are used for training",
+      "None of other options",
+      "The whole dataset is used for training, and the model is validated using bootstrapped samples across five iterations"
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": 192,
+    "text": "Which of the following scenarios can lead to Data Leakage in complex datasets?",
+    "options": [
+      "All other options (except \"None of other options\")",
+      "Implementation of sampling in graphical problems, such as slicing an image, can introduce unintended information",
+      "None of other options (except \"All other options\")",
+      "Dividing a time series dataset into training and test sets can lead to errors due to temporal dependencies"
+    ],
+    "correct_answer": 0
   }
 ]
